@@ -1,0 +1,5 @@
+__pycache__
+bot/__pycache__
+cogs/__pycache__
+.idea
+logs
