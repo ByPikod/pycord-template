@@ -5,3 +5,4 @@ cogs/external
 .idea
 logs
 data.pi
+__main__.py
