@@ -74,7 +74,7 @@ def setup(bot: PiBot) -> None:
             return
 
         if type(error) in errors:
-            await ctx.reply(embed=bot.embed(**errors[error]))
+            await ctx.reply(embed=bot.embed(**errors[type(error)]))
             return
 
         traceback.print_exception(error)
@@ -86,7 +86,7 @@ def setup(bot: PiBot) -> None:
             return
 
         if type(error) in errors:
-            await ctx.reply(embed=bot.embed(**errors[error]))
+            await ctx.respond(embed=bot.embed(**errors[type(error)]))
             return
 
         traceback.print_exception(error)

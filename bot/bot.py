@@ -1,5 +1,6 @@
 import discord
 import os
+import sqlite3
 from datetime import datetime
 
 from discord.ext import commands
@@ -8,6 +9,7 @@ from bot.colors import PiColors
 
 class PiBot(discord.Bot):
 
+    db: sqlite3.Connection
     owner_ids = []
     owners = []
     exts = []
@@ -26,6 +28,7 @@ class PiBot(discord.Bot):
     def __init__(self, owner: int | tuple = tuple(), *args, **kwargs):
 
         super(PiBot, self).__init__(*args, **kwargs)
+        self.db = sqlite3.connect("data.pi")
 
         if not os.path.exists("cogs"):
             os.mkdir("cogs")
@@ -55,6 +58,10 @@ class PiBot(discord.Bot):
 
         print("Reloading...")
         for k in self.exts:
+
+            if self.exts[k] is not True:
+                continue
+
             self.unload_extension(k)
             print(f"Unloaded extension: {k}")
 

@@ -52,6 +52,18 @@ class OwnerTools(commands.Cog):
             file=discord.File(filePath)
         )
 
+    @ownerGroup.command(description="Join a voice channel to debug")
+    @commands.is_owner()
+    async def bring(self, ctx: discord.ApplicationContext):
+        await ctx.author.voice.channel.connect()
+        await ctx.respond(
+            embed=self.bot.embed(
+                description="Kanala girdim.",
+                color=PiColors.GREEN
+            ),
+            ephemeral=True
+        )
+
     @ownerGroup.command(description="Make bot say something.")
     @commands.is_owner()
     async def say(self, ctx: discord.ApplicationContext, text: str):

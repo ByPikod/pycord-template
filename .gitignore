@@ -1,5 +1,8 @@
 __pycache__
 bot/__pycache__
 cogs/__pycache__
+cogs/external
+__main__.py
 .idea
 logs
+data.pi
